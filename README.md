@@ -104,7 +104,7 @@ Note that whatever other props you want to add to the elements, you should alway
 
 ## Contributors
 
-[![contributors](https://contrib.rocks/image?repo=jcanotorr06/solid-qr)](https://github.com/jcanotorr06/solid-dzone/graphs/contributors)
+[![contributors](https://contrib.rocks/image?repo=jcanotorr06/solid-dzone)](https://github.com/jcanotorr06/solid-dzone/graphs/contributors)
 
 ## Licence
 
