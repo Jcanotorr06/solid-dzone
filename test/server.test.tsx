@@ -1,30 +1,30 @@
-import { describe, expect, it } from 'vitest'
-import { isServer, renderToString } from 'solid-js/web'
-import { Hello, createHello } from '../src'
+import { describe, expect, it } from "vitest"
+import { isServer, renderToString } from "solid-js/web"
+import { createDropzone } from "../src"
 
-describe('environment', () => {
-  it('runs on server', () => {
-    expect(typeof window).toBe('undefined')
+describe("environment", () => {
+  it("runs on server", () => {
+    expect(typeof window).toBe("undefined")
     expect(isServer).toBe(true)
   })
 })
 
-describe('createHello', () => {
-  it('Returns a Hello World signal', () => {
-    const [hello] = createHello()
-    expect(hello()).toBe('Hello World!')
-  })
+describe("createDropzone", () => {
+  it("Returns a dropzone object containing the state, methods and signals", () => {
+    const dropzone = createDropzone<HTMLDivElement>()
 
-  it('Changes the hello target', () => {
-    const [hello, setHello] = createHello()
-    setHello('Solid')
-    expect(hello()).toBe('Hello Solid!')
-  })
-})
-
-describe('Hello', () => {
-  it('renders a hello component', () => {
-    const string = renderToString(() => <Hello />)
-    expect(string).toBe('<div>Hello World!</div>')
+    expect(typeof dropzone).toBe("object")
+    expect(typeof dropzone.isFocused).toBe("function")
+    expect(typeof dropzone.isFileDialogActive).toBe("function")
+    expect(typeof dropzone.isDragging).toBe("function")
+    expect(typeof dropzone.getRootProps).toBe("function")
+    expect(typeof dropzone.getInputProps).toBe("function")
+    expect(typeof dropzone.openFileDialog).toBe("function")
+    expect(typeof dropzone.setRefs).toBe("function")
+    expect(typeof dropzone.files).toBe("function")
+    expect(typeof dropzone.errors).toBe("function")
+    expect(typeof dropzone.removeFile).toBe("function")
+    expect(typeof dropzone.removeError).toBe("function")
+    expect(typeof dropzone.clearFiles).toBe("function")
   })
 })
