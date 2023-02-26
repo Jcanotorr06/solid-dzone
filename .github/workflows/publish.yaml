@@ -2,7 +2,9 @@ name: Publish
 
 on:
   worflow_run:
-    workflows: ["Build and Test", "Format"]
+    workflows:
+      - Format
+      - Build and Test
     types:
       - completed
 
