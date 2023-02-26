@@ -1,4 +1,5 @@
 import { createSignal, JSX } from "solid-js"
+import { isServer } from "solid-js/web"
 import { parseAccept, transformFiles, validateFiles, defaultProps } from "./helpers"
 import type {
   UploadFile,
@@ -25,7 +26,7 @@ const createDropzone = <T extends HTMLElement = HTMLElement>(
     validator,
   } = props
 
-  if (process.env.SSR) {
+  if (isServer) {
     return {
       isFocused: () => false,
       isFileDialogActive: () => false,
