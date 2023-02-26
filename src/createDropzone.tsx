@@ -54,6 +54,33 @@ const createDropzone = <T extends HTMLElement = HTMLElement>(
   let rootRef!: T
   let inputRef!: HTMLInputElement
 
+  /**
+   * Set refs for root and input elements
+   * Must be called inside a setTimout to ensure elements are mounted on the DOM as such:
+   *
+   * setTimeout(() => {
+   *  setRefs(rootRef, inputRef)
+   * })
+   *
+   * @param r Root element ref
+   * @param i Input element ref
+   * @returns void
+   * @example
+   * const { setRefs } = createDropzone<HTMLDivElement>()
+   *
+   * let rootRef!: HTMLDivElement
+   * let inputRef!: HTMLInputElement
+   *
+   * setTimeout(() => {
+   *  setRefs(rootRef, inputRef)
+   * })
+   *
+   * return (
+   *  <div ref={rootRef}>
+   *    <input ref={inputRef} />
+   *  </div>
+   * )
+   */
   const setRefs = (r: T, i: HTMLInputElement) => {
     rootRef = r
     inputRef = i
