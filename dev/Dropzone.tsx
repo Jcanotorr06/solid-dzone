@@ -21,7 +21,7 @@ const Dropzone = () => {
     maxFiles: 2,
     maxSize: 370000,
     multiple: true,
-    accept: [],
+    accept: ["image/*"],
   })
 
   let inputRef!: HTMLInputElement
