@@ -127,10 +127,10 @@ const createDropzone = <T extends HTMLElement = HTMLElement>(
     }
   }
 
-  const handleFiles = (files: FileList) => {
+  const handleFiles = (files: FileList, reset?: boolean) => {
     if (disabled) return
 
-    clearFiles()
+    if (reset) clearFiles()
 
     const transformedFiles = transformFiles(files)
 
@@ -208,7 +208,7 @@ const createDropzone = <T extends HTMLElement = HTMLElement>(
     const droppedFiles = e.dataTransfer?.files
 
     if (droppedFiles && droppedFiles.length) {
-      handleFiles(droppedFiles)
+      handleFiles(droppedFiles, true)
     }
   }
 
@@ -250,7 +250,7 @@ const createDropzone = <T extends HTMLElement = HTMLElement>(
 
   const handleChange = (e: Event) => {
     if (disabled) return
-    const files = (e.target as HTMLInputElement).files
+    const files = (e.currentTarget as HTMLInputElement).files
     if (!files) return
 
     handleFiles(files)
